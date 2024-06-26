@@ -7,6 +7,9 @@ export LC_ALL="en_US.UTF-8"
 # Set reader as zathura
 export READER=zathura
 
+# Set dotfiles alias
+alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
