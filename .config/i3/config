@@ -9,6 +9,12 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# TODO:
+# Note: pulseaudio/pipewire
+# 1. packages: pactl/wpctl brightnessctl feh i3blocks i3status xclip xdotool jq lxappearance i3lock pavucontrol/qpwgraph acpi picom nm-applet/network-manager-applet maim dex xss-lock
+# 2. download TODO auxiliary packages for i3blocks
+# 3. check $MOD + Right to see if the workspace switching is working 
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -36,10 +42,17 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# use wpctl to adjust volume in Pipewire.
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%- && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_i3status
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -58,7 +71,7 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-bindsym $mod+Right exec /home/dyu/.config/i3/switch_active_workspace.sh
+bindsym $mod+Right exec $HOME/.config/i3/switch_active_workspace.sh
 
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
@@ -141,15 +154,16 @@ bindsym $mod+0 workspace number $ws10
 
 # workspace setup
 #assign [class="Gnome-terminal"] $ws1
-assign [class="Code"] $ws2
+#assign [class="Code"] $ws2
+assign [class="code-oss"] $ws2
 assign [class="firefox"] $ws3
 assign [class="Zotero"] $ws4
 assign [class="Freetube"] $ws3
 assign [class="discord"] $ws5
 assign [class="Slack"] $ws5
 
-exec code
-exec gnome-terminal
+exec code-oss
+exec i3-sensible-terminal
 exec zotero
 
 # move focused container to workspace
@@ -199,7 +213,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Other colors: #2f343f
-# Set colors
+# Set colorst
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
@@ -231,7 +245,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 # finds out, if available:
 # bar
 bar {
-	status_command i3blocks -c /home/dyu/.config/i3/i3blocks.conf
+	status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
   	#status_command i3blocks -c /home/booker/.i3/i3blocks.conf
 	colors {
 		background $bg-color
@@ -257,5 +271,5 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-exec_always feh --bg-scale /home/dyu/.wallpaper/wallpaper.png
-exec compton -f
+exec_always feh --bg-scale $HOME/.wallpaper/wallpaper.png
+exec picom -f

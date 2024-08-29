@@ -1,1 +1,1 @@
-mkdir Music screenshots .wallpaper .music-not-tagged
+mkdir $HOME/Music $HOME/.music-not-tagged $HOME/screenshots
