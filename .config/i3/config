@@ -71,6 +71,9 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# script to view current courses
+bindsym $mod+Shift+D exec $HOME/scripts/rofi-courses.sh
+bindsym $mod+Ctrl+D exec $HOME/scripts/rofi-searchfiles.sh
 bindsym $mod+Right exec $HOME/.config/i3/switch_active_workspace.sh
 
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -156,15 +159,15 @@ bindsym $mod+0 workspace number $ws10
 #assign [class="Gnome-terminal"] $ws1
 #assign [class="Code"] $ws2
 assign [class="code-oss"] $ws2
-assign [class="firefox"] $ws3
+#assign [class="firefox"] $ws3
 assign [class="Zotero"] $ws4
 assign [class="Freetube"] $ws3
 assign [class="discord"] $ws5
 assign [class="Slack"] $ws5
 
-exec code-oss
+#exec code-oss
 exec i3-sensible-terminal
-exec zotero
+#exec zotero
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -233,13 +236,13 @@ bindsym $mod+Shift+x exec i3lock --color "$bg-color"
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/screenshots/$(date).png"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/screenshots/$(date).png"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/screenshots/$(date).png"
+bindsym $mod+p exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/screenshots/$(date).png"
+#bindsym Shift+p exec --no-startup-id maim --select "/home/$USER/screenshots/$(date).png"
 
 ## Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection cli
+bindsym Ctrl+p exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+p exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+p exec --no-startup-id maim --select | xclip -selection cli -t image/png
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available:
@@ -273,3 +276,6 @@ bindsym XF86AudioPrev exec playerctl previous
 
 exec_always feh --bg-scale $HOME/.wallpaper/wallpaper.png
 exec picom -f
+
+# for double-click function
+exec --no-startup-id xbindkeys

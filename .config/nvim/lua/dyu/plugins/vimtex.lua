@@ -6,6 +6,15 @@ return {
     -- VimTeX configuration goes here, e.g.
     vim.g.vimtex_view_method = 'zathura'
     vim.g.vimtex_compiler_method = 'latexmk'
+    vim.g.vimtex_compiler_latexmk = {
+      options = {
+        '-pdf', -- generate PDF directly
+        '-interaction=nonstopmode', -- continue compiling despite errors
+        '-synctex=1',
+        '-aux-directory=build',
+        '-output-directory=.',
+      },    
+    }
 
     -- Key mappings
     local keymap = vim.keymap
