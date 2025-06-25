@@ -1,0 +1,60 @@
+{
+    "workbench.colorTheme": "Tokyo Night",
+    "workbench.preferredDarkColorTheme": "Tokyo Night",
+    "workbench.preferredLightColorTheme": "Tokyo Night Light",
+    "workbench.colorCustomizations": {
+        "[Tokyo Night]": {
+            "foreground": "#959cbd",
+            "panelTitle.activeBorder": "#3d59a1",
+            "panelTitle.activeForeground": "#bdc7f0",
+            "panelTitle.inactiveForeground": "#959cbd",
+            "tab.activeForeground": "#bdc7f0",
+            "tab.inactiveForeground": "#959cbd",
+            "breadcrumb.foreground": "#959cbd",
+            "breadcrumb.focusForeground": "#bdc7f0",
+            "breadcrumb.activeSelectionForeground": "#bdc7f0",
+            "statusBar.foreground": "#bdc7f0",
+            "list.focusForeground": "#bdc7f0",
+            "list.hoverForeground": "#bdc7f0",
+            "list.activeSelectionForeground": "#bdc7f0",
+            "list.inactiveSelectionForeground": "#bdc7f0",
+            "list.inactiveSelectionBackground": "#202330",
+            "sideBar.foreground": "#959cbd",
+            "dropdown.foreground": "#959cbd",
+            "menu.foreground": "#bdc7f0",
+            "menubar.selectionForeground": "#bdc7f0",
+            "input.foreground": "#959cbd",
+            "input.placeholderForeground": "#959cbd",
+            "activityBar.foreground": "#bdc7f0",
+            "activityBar.inactiveForeground": "#787c99",
+            "gitDecoration.ignoredResourceForeground": "#696d87"
+        }
+    },
+    "workbench.settings.applyToAllProfiles": [
+        "workbench.colorCustomizations"
+    ],
+    "remote.SSH.remotePlatform": {
+        "*.gitpod.io": "linux"
+    },
+    "explorer.confirmDelete": false,
+    "editor.wordWrap": "on",
+    "print.folder.fileNames": true,
+    "print.folder.include": [],
+    "print.folder.exclude": [
+        "{bin,obj,out}",
+        "node_modules",
+        "data",
+        "**/*.{bin,exe,dll,hex,pdb,pdf,pfx,png,jpg,gif,bmp,suo,design}"
+    ],
+    "print.folder.maxLines": 1200,
+    "print.folder.maxFiles": 30,
+    "print.folder.includeFileList": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+      },
+    "isort.args":["--profile", "black"],    
+}
