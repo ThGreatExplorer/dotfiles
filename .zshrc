@@ -1,11 +1,12 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:/usr/local/go/bin
 
 # set locale as en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
 
 # Set reader as zathura
 export READER=zathura
+export GTK_DATA_PREFIX=$HOME/.config/gtk-3.0
 
 # Set dotfiles alias
 alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
@@ -79,7 +80,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search last-working-dir)
+plugins=(git zsh-syntax-highlighting web-search last-working-dir)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,3 +112,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+source <(fzf --zsh)
