@@ -81,5 +81,14 @@
         "black"
     ],
     "gitlens.graph.layout": "editor",
-    
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "monospace",   
+    "window.zoomLevel": 1,
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
 }

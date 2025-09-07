@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:/usr/local/go/bin
+export PATH=$HOME/.npm/_npx:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$PATH:/home/daniel/.local/share/coursier/bin
 
 # set locale as en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
@@ -81,8 +81,8 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting web-search last-working-dir)
-
 source $ZSH/oh-my-zsh.sh
+#./usr/bin/gemini_set_api_key.sh
 
 # User configuration
 

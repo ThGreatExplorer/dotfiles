@@ -240,7 +240,7 @@ bindsym $mod+p exec --no-startup-id maim --window $(xdotool getactivewindow) "/h
 #bindsym Shift+p exec --no-startup-id maim --select "/home/$USER/screenshots/$(date).png"
 
 ## Clipboard Screenshots
-bindsym Ctrl+p exec --no-startup-id maim | xclip -selection clipboard -t image/png
+#bindsym Ctrl+p exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+p exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+p exec --no-startup-id maim --select | xclip -selection cli -t image/png
 
